@@ -24,3 +24,19 @@ class Complaint(models.Model):
     Complaint_of = models.CharField(max_length=50, blank=False)
     Complaint_description = models.CharField(max_length=300)
     Complaint_resolution_status = models.BooleanField(default=False)
+
+
+
+# Create your models here.
+class EmployerModel(models.Model):
+    emp_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    password = models.IntegerField(max_length=8)
+    pfp = models.ImageField(null=False,blank=False)
+    aadharcard = models.ImageField(null=False, blank=False)
+
+
+
+    def _str_(self):
+        return self.emp_id + "" + str(self.name)    
