@@ -1,0 +1,56 @@
+{
+    Worker : {
+        WorkerID : String (Primary Key, required),
+        Password : String (required),
+        Name : String (required),
+        Age : Integer (required),
+        gender : String (required),
+        Email : String (required),
+        Profile_photo_URL : String (required),
+        Phone_number : String (required),
+        Address : String,
+        Aadhar_URL : String (required),
+        City_of_origin : String,
+        Medical_history : String,
+        Pregnancy_status : String (required)
+        Prefered_work_location : String (required),
+        Skills : Array[String] (required),
+        Languages : Array[String] (required)
+        All_jobs_applied : Array[JobIDs (string)],
+        Worker_rating : Integer (required),
+         
+    },
+
+    Employer : {
+        EmployerID : String (Primary Key, required),
+        Name : String (required),
+        Password : String (required),
+        Profile_photo_URL : String (required),
+        All_jobs_posted : Array[JobIDs (string)],
+        All_candidates_hired : Array[WorkerID],
+        All_Complaints : Array[ComplaintID] 
+    },
+
+    Job : {
+        JobID : String (Primary Key, required),
+        Job_title : String (required),
+        Applicants_ID : String (required)
+        Job_location : String (required),
+        Language_preference : Array[String] (required),
+        Wages_per_hours : Integer (required, MIN=200Rs),
+        Contract_tenure : Integer (required (in days)),
+        required_skills : Array[Strings] (required),
+        Job_Status : Boolean (required, (0=>not hiring, 1=>hiring)),
+        Employer_contact_number : Integer (required),
+        Number_of_vaccencies : Integer (required),
+        Applicants : Array[WorkerID] 
+    },
+
+    Complaints : {
+        ComplaintID : String (required),
+        Complaint_by : String (required),
+        Complaint_of : String (required, EmployerID),
+        Complaint_description : String (required),
+        Complaint_resolution_status : Boolean (0=>not_resolved, 1=>resolved, required) 
+    }
+}
